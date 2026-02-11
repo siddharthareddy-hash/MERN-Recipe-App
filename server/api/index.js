@@ -1,3 +1,4 @@
+console.log("Express loaded");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -21,10 +22,10 @@ app.get("/", (req, res) => {
 });
 
 // routes
-const LoginRoute = require("./routes/LoginRoute");
-const RegisterRoute = require("./routes/RegisterRoute");
-const RecipeRoute = require("./routes/RecipeRoute");
-const ForgotPassword = require("./routes/forgotPassword");
+const LoginRoute = require("../routes/LoginRoute");
+const RegisterRoute = require("../routes/RegisterRoute");
+const RecipeRoute = require("../routes/RecipeRoute");
+const ForgotPassword = require("../routes/forgotPassword");
 
 app.use("/auth", LoginRoute);
 app.use("/auth", RegisterRoute);
@@ -33,8 +34,6 @@ app.use("/auth", ForgotPassword);
 
 // DO NOT hardcode port on Vercel
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
 
 module.exports = app;
